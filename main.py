@@ -49,8 +49,8 @@ print(regbikes)
 
 
 if(len(ebikes) > 1):
-    mytext = str(len(ebikes)) + 'E-Bikes Nearby'
-    ortext = str(len(regbikes)) + "Regular Bicycles Nearby"
+    mytext = str(len(ebikes)) + 'E-Bikes Nearby and'
+    ortext = str(len(regbikes)) + "Bicycles Nearby"
 elif(len(ebikes) == 1):
     mytext = str(len(ebikes)) + 'E-Bike Nearby'
 else:
