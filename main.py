@@ -3,7 +3,7 @@ import json
 import numpy as np
 from gtts import gTTS
 import os
-
+import time
 
 lng = -117.2329987
 lat = 32.8777024
@@ -23,11 +23,10 @@ jsonloadget = jsonget.json()
 jsonarray = json.dumps(jsonloadget).split("{")
 ebikes = []
 regbikes = []
-print(jsonarray)
 for i in jsonarray:
     if("ebike" in i):
         ebikes.append(i)
-    elif("bike" in i):
+    elif("bicycle" in i):
         regbikes.append(i)
 
 #print(ebikes, len(ebikes))
@@ -51,6 +50,7 @@ print(regbikes)
 
 if(len(ebikes) > 1):
     mytext = str(len(ebikes)) + 'E-Bikes Nearby'
+    ortext = str(len(regbikes)) + "Regular Bicycles Nearby"
 elif(len(ebikes) == 1):
     mytext = str(len(ebikes)) + 'E-Bike Nearby'
 else:
@@ -59,3 +59,7 @@ else:
 myobj = gTTS(text=mytext, slow=False)
 myobj.save("owo.mp3")
 os.system("owo.mp3")
+time.sleep(1.5)
+myobjs = gTTS(text=ortext, slow=False)
+myobjs.save("uwu.mp3")
+os.system("uwu.mp3")
