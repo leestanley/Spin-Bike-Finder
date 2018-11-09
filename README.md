@@ -1,12 +1,16 @@
 # Spin Bike Finder
-A work in progress using https://github.com/ubahnverleih/WoBike/blob/master/Spin.md
+A work in progress using the [Spin unofficial API](  https://github.com/ubahnverleih/WoBike/blob/master/Spin.md)
 
 Current Libraries: 
-import requests
-import json
-import numpy as np
-from gtts import gTTS
-import os
-import string
+---
+1. import requests
+2. import json
+3. import numpy as np
+4. from gtts import gTTS
+5. import os
+6. import string
+
 
 Documentation:
+---
+soon tm
