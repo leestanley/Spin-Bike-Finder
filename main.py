@@ -1,12 +1,14 @@
 import requests
 import json
 import numpy as np
-from gtts import gTTS
+#from gtts import gTTS
 import os
-import time
+#import time
+from geopy.distance import geodesic
 
 lng = -117.2329987
 lat = 32.8777024
+
 
 userdata = {"device": {"mobileType": "ios", "uid": ":“123E6568-E89B-12D3-A456-426655440000"}, "grantType": "device"}
 data = requests.post("https://web.spin.pm/api/v1/auth_tokens", json=userdata)
@@ -27,32 +29,32 @@ for i in jsonarray:
         ebikes.append(i)
     elif("bicycle" in i):
         regbikes.append(i)
-
 splitray = ebikes[0].split(" ")
-# x = splitray
-# x = map(str, x)
-# x = list(x)
-# print(x)
-# y = []
-# for i in splitray:
-#     i.replace
-#     y.append(i)
-# print(y)
+print(splitray)
+finalray = []
+for i in splitray:
+    if "." in i:
+        j = i.replace(",", "")
+        finalray.append(float(j))
+finalray.append(32.123232)
+finalray.append(-120.23232)
+print(finalray)
 
-# while True:
-#     for i in ebikes:
-#         splitray
+tuplefinalray = []
+for i in np.arange(0, len(finalray), 2):
+    tuplefinalray.append([finalray[i], finalray[i + 1]])
 
 print(len(ebikes))
+print(tuple(map(tuple, tuplefinalray)))
 
 
 def voice():
     if(len(ebikes) == 1):
-        #mytext = str(len(ebikes)) + 'E-Bikes Nearby and'
-        #ortext = str(len(regbikes)) + "Bicycles Nearby"
+        # mytext = str(len(ebikes)) + 'E-Bikes Nearby and'
+        # ortext = str(len(regbikes)) + "Bicycles Nearby"
         os.system("C:/Users/Stanley/Desktop/Spin-Bike-Finder/haojin/1.m4a")
     elif(len(ebikes) == 2):
-        #mytext = str(len(ebikes)) + 'E-Bike Nearby'
+        # mytext = str(len(ebikes)) + 'E-Bike Nearby'
         os.system("C:/Users/Stanley/Desktop/Spin-Bike-Finder/haojin/2.m4a")
     elif(len(ebikes) == 3):
         os.system("C:/Users/Stanley/Desktop/Spin-Bike-Finder/haojin/3.m4a")
@@ -66,8 +68,11 @@ def voice():
         os.system("C:/Users/Stanley/Desktop/Spin-Bike-Finder/haojin/none.mp3")
 
 
+#print(geodesic(base, cleveland_oh).miles)
+
 voice()
-#mytext = 'No E-Bikes Nearby'
+
+# mytext = 'No E-Bikes Nearby'
 # while True:
 #     voice()
 #     time.sleep(300)
