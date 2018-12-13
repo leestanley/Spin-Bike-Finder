@@ -20,15 +20,21 @@ jwttoken = jsonload[3]
 
 jsonget = requests.get("https://web.spin.pm/api/v3/vehicles?lng=-117.2329987&lat=32.8777024&distance=&mode=", headers={'Authorization': 'Bearer ' + jwttoken})
 jsonloadget = jsonget.json()
+print(jsonloadget)
+print(type(jsonloadget))
+
 
 jsonarray = json.dumps(jsonloadget).split("{")
 ebikes = []
 regbikes = []
 for i in jsonarray:
     if("ebike" in i):
+        # print("found")
         ebikes.append(i)
     elif("bicycle" in i):
+        # print("found")
         regbikes.append(i)
+
 splitray = ebikes[0].split(" ")
 print(splitray)
 finalray = []
@@ -36,16 +42,16 @@ for i in splitray:
     if "." in i:
         j = i.replace(",", "")
         finalray.append(float(j))
-finalray.append(32.123232)
-finalray.append(-120.23232)
+
 print(finalray)
 
 tuplefinalray = []
 for i in np.arange(0, len(finalray), 2):
     tuplefinalray.append([finalray[i], finalray[i + 1]])
-
+print(ebikes)
 print(len(ebikes))
-print(tuple(map(tuple, tuplefinalray)))
+tuplefinalray = tuple(map(tuple, tuplefinalray))
+print(tuplefinalray)
 
 
 def voice():
